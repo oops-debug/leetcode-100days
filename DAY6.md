@@ -1,6 +1,7 @@
 # 常用枚举技巧
 ## 枚举中间
 ### 2909. 元素和最小的山形三元组 II
+维护一个后缀的最小值的列表，前缀直接更新
 ```python
 class Solution(object):
     def minimumSum(self, nums):
