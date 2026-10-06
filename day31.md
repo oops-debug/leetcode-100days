@@ -79,21 +79,33 @@ class Solution:
 ```
 ### 54. 螺旋矩阵
 ```python
-DIRS = (0, 1), (1, 0), (0, -1), (-1, 0)  # 右下左上
+# DIRS = (0, 1), (1, 0), (0, -1), (-1, 0)  # 右下左上
+# class Solution:
+#     def spiralOrder(self, matrix: list[list[int]]) -> list[int]:
+#         m = len(matrix)
+#         n = len(matrix[0])
+#         size = m*n
+#         ans = []
+#         # 起点（0，-1）
+#         i, j , di = 0, -1, 0
+#         # 遍历ans<m*n
+#         while len(ans) < size:
+#             # 递增的规律 (0, 1), (1, 0), (0, -1), (-1, 0) 循环
+#             dx, dy = DIRS[di]
+#             for _ in range[n]:
+#                 i += dx
+#                 j += dy
+#                 ans.append(matrix[i][j])
+#             di = (di+1)%4
+#             m, n = n, m-1
+#         return ans
+        
 class Solution:
-    def spiralOrder(self, matrix: list[list[int]]) -> list[int]:
-        m, n = len(matrix), len(matrix[0])
-        size = m*n
-        ans = []
-        i, j, di = 0, -1, 0
-        while len(ans)< size:
-            dx, dy = DIRS[di]
-            for _ in range(n):
-                i += dx
-                j += dy
-                ans.append(matrix[i][j])
-            di = (di + 1)%4
-            m, n = n, m-1
-        return ans
-
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        res = []
+        while matrix:
+            res.extend(matrix[0])
+            matrix.pop(0)
+            matrix = list(zip(*matrix))[::-1]
+        return res
 ```
